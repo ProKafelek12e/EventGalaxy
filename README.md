@@ -1,2 +1,2 @@
 # SZPS
-system zarządzania projekktami szkolnymi (wydarzenia szkolne)
+system zarządzania projektami szkolnymi (wydarzenia szkolne)
