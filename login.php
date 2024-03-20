@@ -1,3 +1,6 @@
+<?php
+session_start()
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,19 +15,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="loginRoot">
-        <div id="Login">
-            <form action="" method="post">
-                <input type="text" name="Login" placeholder="Login">
-                <input type="password" name="Password" placeholder="Password">
-                <input type="submit" value="Log in">
-            </form>
-        </div>
+    <div id="header">
+        <img src="./icons/logo.svg" >
+        <?php include 'list.php' ?>
     </div>
-    <script>
-    function redirectToRegister() {
-        window.location.href = "register.php";
-    }
-</script>
+    <div  id="form">
+        <form action="" method="post">
+            <span>
+                <input type="text" class="input_style" placeholder="Login">
+                <input type="password" class="input_style" placeholder="Password"> 
+            </span>
+            <span>
+                <input type="button" value="Sign Up" class="button"> 
+                <input type="submit" value="Sign In" class="button">
+            </span>
+        </form>
+    </div>
 </body>
 </html>
