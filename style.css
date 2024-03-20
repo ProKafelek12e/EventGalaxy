@@ -108,12 +108,13 @@ p{
     height: 40px;
     width: 85px;
     font-weight: 500;
+    cursor: pointer;
 }
-#form form .button[type='submit']{
-    background-color: #f2c70d;
-    color: #1e1e1e;
-}
-#form form .button[type='button']{
+#form form .button.b{
     background-color: transparent;
     color: #E2E2E2;
+}
+#form form .button.f{
+    background-color: #f2c70d;
+    color: #1e1e1e;
 }

@@ -26,10 +26,19 @@ session_start()
                 <input type="password" class="input_style" placeholder="Password"> 
             </span>
             <span>
-                <input type="button" value="Sign Up" class="button"> 
-                <input type="submit" value="Sign In" class="button">
+                <input type="submit" name = "Up" value="Sign Up" class="button b"> 
+                <input type="submit" name = "In" value="Sign In" class="button f">
             </span>
         </form>
     </div>
+    <?php
+        if(isset($_POST['Up'])){
+            // insert into -> alert "acc created"
+        }
+        elseif(isset($_POST['In'])){
+            header('Location: ./index.php');
+            //select if(rows>0) -> log in 
+        }
+    ?>
 </body>
 </html>
