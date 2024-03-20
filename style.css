@@ -15,88 +15,29 @@ p{
     color: #A2A2A2;
     font-size: 12px;
 }
-label{
-    color: #A2A2A2;
-    font-size: 12px;
-    padding-left: 10px;
-}
 
-li{
-    list-style-type: '◀  ';
-    color: #e2e2e2;
-}
-ul{
-    position: absolute;
-    top: 20px;
-    right: 20px;
+/* TABS */
+
+#tabs{
+    direction: ltr;
+    list-style-type:none ;
     display: flex;
-    flex-direction: column;
-    direction: rtl;
-    gap: 10px;
+    flex-direction: row;
 }
-a{
-    font-weight: bold;
-    color: #C2C2C2;
+#tabs img{
+    width: 64px;
+    height: 64px;
+    margin: 0px 10px 0px 10px;
+}
+.tab a{
     text-decoration: none;
-}
-
-
-
-/* Login.php */
-#loginRoot{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    flex-direction: row;
 }
-#Login{
-    width: 25%;
-    height: 40vh;
-    background-color: #2a2a2a;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-#Login form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    gap: 2%;
-}
-#Login input[type=text],input[type=password]{
-    height: 7%;
-    font-size: 80%;
-    width: 35%;
-    height: 30px;
-}
-#Login input[type=submit]{
-    width: 35%;
-    font-size: 80%;
-    height: 30px;
-}
-
-
-
-
-#Login input{
-
-    border: 3px solid #000;
-    border-radius: 5px;
-    line-height: normal;
-    color: #282828;
-    display: block;
-    box-sizing: border-box;
-    user-select: auto;
-    font-size: 16px;
-    padding: 0 6px;
-    padding-left: 12px;
-    :focus{
-        border: 3px solid #5551ff;
-    }
-    
+.tab a h3{
+    font-size: 48px;
+    color: #E2E2E2;
+    margin: 0px;
+    margin-top: 5px;
+    font-weight: normal;
 }
