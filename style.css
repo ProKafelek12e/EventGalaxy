@@ -5,6 +5,7 @@ body{
     height: 100vh;
     display: grid;
     grid-template-rows: 210px 1fr;
+    overflow: hidden;
 }
 h1{
     color: #E2E2E2;
@@ -122,4 +123,78 @@ p{
 
 #form h4{
     color: #f2c70d;
+}
+
+
+/* Calendar */
+#calendar{
+    overflow-y: auto;
+}
+table{
+    display: flex;
+    justify-content: center;
+}
+
+td{
+    vertical-align: top;
+    padding: 0;
+    background-color: #1e1e1e;
+    width: 220px;
+    height: 300px;
+    border: 5px solid #2E2E2E;
+    position: relative;
+}
+td h4.sunday{
+    color: red;
+}
+td h4{
+    margin: 10px 0 0 10px;
+    color: #E2E2E2;
+    font-weight: bold;
+    font-size: 64px;
+    position: relative;
+    top: 0px;
+
+}
+
+#calendar::-webkit-scrollbar {
+    width: 12px;
+}
+
+#calendar::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #1e1e1e;
+}
+
+#calendar::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #f2c70d;
+}
+
+
+
+/* Calendar Event on day */
+.event {
+    position: absolute;
+    bottom: 0px;
+    width: 210px;
+    margin: 0 5px 30px 5px;
+}
+.event hr{
+    height: 5px;
+    width: 100%;
+    border: 0;
+}
+.event span{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.event span h5{
+    margin:5px 0 0 0;
+    color: #E2E2E2;
+    font-size: 20px;
+}
+.timeContainer .top{
+    font-size: 10px;
 }
