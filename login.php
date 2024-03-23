@@ -27,8 +27,8 @@ session_start()
                 <input type="password" name="password" class="input_style" placeholder="Password"> 
             </span>
             <span>
-                <input type="submit" name = "Up" value="Sign Up" class="button b"> 
                 <input type="submit" name = "In" value="Sign In" class="button f">
+                <input type="submit" name = "Up" value="Sign Up" class="button b"> 
             </span>
         </form>
         <?php
@@ -77,6 +77,7 @@ session_start()
                     
                     $_SESSION['Permission'] = $row['permission'];
                     $_SESSION['IsLogged'] = 1;
+                    $_SESSION['Id'] = $row['user_id'];
                     
                     header('Location: ./index.php');
                 }
