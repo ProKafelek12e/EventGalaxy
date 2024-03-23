@@ -23,6 +23,8 @@ session_start()
     <div id="calendar">
 
         <?php
+        if(isset($_SESSION['Id'])&&$_SESSION['Id']!=null){
+            
             function formatTime($time){
                 return '<span class="timeContainer"><span>'.substr($time,0,2).'</span>'.'<span class="top">'.substr($time,3,2).'</span></span>';
             }
@@ -38,7 +40,7 @@ session_start()
                 die(mysqli_connect_error($conn));
             }
             else{
-                $sql = "SELECT * FROM events WHERE date LIKE '$currentYear%$currentMonth-__' ORDER BY date asc, time asc";
+                $sql = "SELECT events.* FROM `user-event`,`events` WHERE `user-event`.`event_id` = events.event_id and `user-event`.`user_id`= ".$_SESSION['Id']." AND  events.date LIKE '$currentYear%$currentMonth-__' ORDER BY date asc, time asc";
                 $result = mysqli_query($conn,$sql);
                 if(mysqli_num_rows($result)>0){
                     while( $row = mysqli_fetch_assoc($result)){
@@ -115,6 +117,12 @@ session_start()
 
             echo "</tr>";
             echo "</table>";
+            
+        }
+        else{
+            echo "<h4 class='comm'>You must login to access calendar</h4>";
+            echo "<a href='./account.php'><button class='redirect'>Log in</button></a>";
+        }
         ?>
 
 

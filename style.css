@@ -110,6 +110,7 @@ p{
     height: 40px;
     width: 85px;
     font-weight: 500;
+    font-size: 14px;
     cursor: pointer;
 }
 #form form .button.b{
@@ -129,6 +130,7 @@ p{
 /* Calendar */
 #calendar{
     overflow-y: auto;
+    text-align: center;
 }
 table{
     display: flex;
@@ -143,6 +145,7 @@ td{
     height: 300px;
     border: 5px solid #2E2E2E;
     position: relative;
+    border-radius: 10px;
 }
 td h4.sunday{
     color: red;
@@ -197,4 +200,23 @@ td h4{
 }
 .timeContainer .top{
     font-size: 10px;
+}
+#calendar .comm{
+    font-size: 48px;
+    color: #f2c70d;
+    font-weight: bold;
+}
+
+
+.redirect{    
+    background-color: #f2c70d;
+    color: #1e1e1e;
+    margin-top: 5px;
+    border: solid #f2c70d 5px;
+    border-radius: 35px; 
+    height: 40px;
+    width: 85px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
 }

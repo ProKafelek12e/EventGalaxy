@@ -81,6 +81,12 @@ session_start()
                     
                     header('Location: ./index.php');
                 }
+                else{
+                    echo "<h4>Login or password are wrong</h4>";
+                    $_SESSION['Permission'] = null;
+                    $_SESSION['IsLogged'] = 0;
+                    $_SESSION['Id'] = null;
+                }
             }
         }
     }
