@@ -133,8 +133,21 @@ session_start()
                 }
             }
             if(isset($_POST['oldPassword'])&&isset($_POST['newPassword'])){
+                $conn = mysqli_connect('localhost','root','','szps');
+                if(!$conn){
+                   die(mysqli_connect_error($conn));
+                }
                 if(isset($_POST['Changed'])){
-                    echo"<h4>Password Changed</h4>"; //temporary
+                    $check_sql = "SELECT * FROM users WHERE login='".$_SESSION['Account']['login']."' AND password = '".md5($_POST['oldPassword'])."'";
+                    $check_result = mysqli_query($conn,$check_sql);
+                    if(mysqli_num_rows($check_result)>0){
+                        $sql = "UPDATE users SET password='".md5($_POST['newPassword'])."' WHERE user_id=". $_SESSION['Account']['id'];
+                        $result = mysqli_query($conn,$sql);
+                        echo"<h4>Password Changed</h4>";
+                        }           
+                        else{
+                            echo "<h4>Something went wrong</h4>";
+                        }
                 }
             }
         ?>
