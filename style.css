@@ -62,6 +62,14 @@ p{
 
 
 /* INPUT */
+#form{
+    background-color: #1e1e1e;
+    border-radius: 16px;
+    width: 700px;
+    height: 400px;
+    align-self: center;
+    justify-self: center;
+}
 .input_style {
     height: 40px;
     width: 300px;
@@ -75,18 +83,12 @@ p{
     padding: .4em;
     color: rgb(255, 255, 255);
 }
-#form{
+#form.notLogged{
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-self: center;
-    justify-self: center;
-    background-color: #1e1e1e;
-    border-radius: 16px;
-    width: 700px;
-    height: 400px;
 }
-#form form{
+#form.notLogged form{
     display: flex;
     height: 60%;
     width: 100%;
@@ -95,7 +97,7 @@ p{
     justify-content: center;
     gap: 20px;
 }
-#form form span{
+#form.notLogged form span{
     height: 120px;
     display: flex;
     flex-direction: column;
@@ -121,12 +123,51 @@ p{
     background-color: #f2c70d;
     color: #1e1e1e;
 }
-
+#form form .button.l{
+    width: 150px;
+}
 #form h4{
     color: #f2c70d;
 }
-
-
+#form.logged{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 30px;
+    width: 640px;
+    height: 340px;
+}
+#form.logged #LogForm{
+    position: relative;
+    bottom: 0px;
+}
+#form form .text{
+    background-color: transparent;
+    color: #C2C2C2;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.change{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+.change span{
+    display: flex;
+    flex-direction: column;
+}
+.change span.horizontal{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    width: 50%;
+}
 /* Calendar */
 #calendar{
     overflow-y: auto;
