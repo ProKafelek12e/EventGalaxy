@@ -44,8 +44,8 @@ session_start()
                 echo '</form>';
             }
             elseif($_SESSION['IsLogged']==1){
-                echo '<div  id="form" class="logged">';
                 if(isset($_POST['Change'])){
+                    echo '<div  id="form" class="logged C">';
                     echo '<form action="" method="post" class="change">';
                     echo '<span>';
                     echo '<input type="password" name="oldPassword" class="input_style" placeholder="Current Password">';
@@ -59,15 +59,30 @@ session_start()
                     echo '</form>';
                 }
                 else{
-                    echo '<h4>Hello '.$_SESSION['Account']['login'].'</h4>';
-                    echo '<span>';
-                    echo '<form action="" method="post">';
+                    echo '<div  id="form" class="logged A">';
+                    echo '<h4 id="hello">Hello '.$_SESSION['Account']['login'].'</h4>';
+                    echo '<form id="pass" action="" method="post">';
                     echo '<input type="submit" name = "Change" value="Change Password" class="text">';
                     echo '</form>';
-                    echo '<form action="" method="post" id="LogForm">';
+                    echo '<form id="out" action="" method="post" id="LogForm">';
                     echo '<input type="submit" name = "Out" value="Sign Out" class="button f">';
                     echo '</form>';
-                    echo '</span>';
+                    $conn = mysqli_connect('localhost','root','','szps');
+
+                    $aSql = "SELECT Count(id) as All_events FROM `user-event` WHERE user_id=1";
+                    $cSql = "SELECT Count(id) as Current_events FROM `user-event`,events WHERE `user-event`.user_id=1 AND `user-event`.event_id = events.event_id AND (SELECT CURRENT_DATE())<=events.date";
+                    
+                    $aResult = mysqli_query($conn,$aSql);
+                    $aRow = mysqli_fetch_assoc($aResult);
+
+                    $cResult = mysqli_query($conn,$cSql);
+                    $cRow = mysqli_fetch_assoc($cResult);
+                    
+                    mysqli_close($conn);
+                    echo "<div id='stats'>";
+                    echo "<h5> Alltime: ".$aRow['All_events']."</h5>";
+                    echo "<h5> Current: ".$cRow['Current_events']."</h5>";
+                    echo "</div>";
                 }
             }
         ?>
@@ -146,7 +161,7 @@ session_start()
                         echo"<h4>Password Changed</h4>";
                         }           
                         else{
-                            echo "<h4>Something went wrong</h4>";
+                            echo "<script>alert('Something went wrong')</script>";
                         }
                 }
             }

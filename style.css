@@ -129,7 +129,7 @@ p{
 #form h4{
     color: #f2c70d;
 }
-#form.logged{
+#form.logged.C{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -137,9 +137,32 @@ p{
     width: 640px;
     height: 340px;
 }
-#form.logged #LogForm{
-    position: relative;
-    bottom: 0px;
+#form.logged.A{
+    display: grid;
+    grid-template-rows: 1fr 4.5fr 3fr 1.5fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'hello' 'stats' 'pass' 'out';
+}
+#form.logged.A #hello{
+    grid-area: hello;
+    padding: 0 5%;
+}
+#form.logged.A #pass{
+    grid-area: pass;
+    padding: 0 5%;
+}
+#form.logged.A #stats{
+    grid-area: stats;
+    padding: 0 5%;
+}
+#form.logged.A #stats{
+    color: #E2E2E2;
+}
+#form.logged.A #out{
+    display: flex;
+    justify-content: right;
+    grid-area: out;
+    padding: 0 10%;
 }
 #form form .text{
     background-color: transparent;
