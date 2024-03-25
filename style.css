@@ -215,12 +215,14 @@ td h4.sunday{
     color: red;
 }
 td h4{
-    margin: 10px 0 0 10px;
+    margin: 10px 10px 0 10px;
     color: #E2E2E2;
     font-weight: bold;
     font-size: 64px;
     position: relative;
     top: 0px;
+    width: 50%;
+    aspect-ratio: 2/1;
 
 }
 
@@ -270,7 +272,11 @@ td h4{
     color: #f2c70d;
     font-weight: bold;
 }
+.today{
+    background-color: #f2c70d;
+    border-radius: 100px;
 
+}
 
 .redirect{    
     background-color: #f2c70d;

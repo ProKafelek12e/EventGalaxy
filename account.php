@@ -77,11 +77,15 @@ session_start()
 
                     $cResult = mysqli_query($conn,$cSql);
                     $cRow = mysqli_fetch_assoc($cResult);
-                    
+
+                    $sql = "SELECT join_date FROM users WHERE user_id='".$_SESSION['Account']['id']."';";
+                    $result = mysqli_query($conn,$sql);
+                    $row = mysqli_fetch_assoc($result);
                     mysqli_close($conn);
                     echo "<div id='stats'>";
-                    echo "<h5> Alltime: ".$aRow['All_events']."</h5>";
-                    echo "<h5> Current: ".$cRow['Current_events']."</h5>";
+                    echo "<h5> Member since: ".$row['join_date']."</h5>";
+                    echo "<h5> Alltime joined events: ".$aRow['All_events']."</h5>";
+                    echo "<h5> Current joined events: ".$cRow['Current_events']."</h5>";
                     echo "</div>";
                 }
             }
@@ -107,12 +111,12 @@ session_start()
                             echo "<h4>Login already taken</h4>";
                         }
                         else{
-                            $sql = "INSERT INTO `users`(`login`, `password`, `permission`) VALUES ('$login','".md5($password)."','usr')";
+                            $sql = "INSERT INTO `users`(`login`, `password`, `permission`,`join_date`) VALUES ('$login','".md5($password)."','usr','".date("Y-m-d")."')";
                             $result = mysqli_query($conn,$sql);
                             echo "<h4>Succesfully signed up</h4>";
-                            mysqli_close($conn);
                         }
                     }
+                    mysqli_close($conn);
                 }
 
 
@@ -145,6 +149,7 @@ session_start()
                             $_SESSION['Id'] = null;
                         }
                     }
+                    mysqli_close($conn);
                 }
             }
             if(isset($_POST['oldPassword'])&&isset($_POST['newPassword'])){
@@ -158,12 +163,13 @@ session_start()
                     if(mysqli_num_rows($check_result)>0){
                         $sql = "UPDATE users SET password='".md5($_POST['newPassword'])."' WHERE user_id=". $_SESSION['Account']['id'];
                         $result = mysqli_query($conn,$sql);
-                        echo"<h4>Password Changed</h4>";
+                            echo "<script>alert('Password Changed')</script>";
                         }           
                         else{
                             echo "<script>alert('Something went wrong')</script>";
                         }
                 }
+                mysqli_close($conn);
             }
         ?>
     </div>

@@ -67,7 +67,12 @@ session_start()
             // Fill in the days of the month
             for ($day = 1; $day <= $numDaysInMonth; $day++) {
                 if($firstDayOfMonth==7){
-                    echo "<td><h4 class='sunday'>$day</h4>";
+                    if($day==date('d')){
+                        echo "<td><h4 class='sunday today'>$day</h4>";
+                    }
+                    else{
+                        echo "<td><h4 class='sunday'>$day</h4>";
+                    }
                     if($event_count<count($events)){
                         if(substr($events[$event_count]['date'],-2)==$day){
                             echo '<div class="event">';
@@ -84,7 +89,12 @@ session_start()
                     echo "</td>";
                 }
                 else{
-                    echo "<td><h4>$day</h4>";
+                    if($day==date('d')){
+                        echo "<td><h4 class='today'>$day</h4>";
+                    }
+                    else{
+                        echo "<td><h4>$day</h4>";
+                    }
                     if($event_count<count($events)){
                         if(substr($events[$event_count]['date'],-2)==$day){
 

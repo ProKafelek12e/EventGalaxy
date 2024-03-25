@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2024 at 06:31 PM
--- Wersja serwera: 10.4.32-MariaDB
--- Wersja PHP: 8.2.12
+-- Czas generowania: 25 Mar 2024, 15:55
+-- Wersja serwera: 10.4.27-MariaDB
+-- Wersja PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `szps`
+-- Baza danych: `szps`
 --
 
 -- --------------------------------------------------------
@@ -36,7 +36,7 @@ CREATE TABLE `events` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `events`
+-- Zrzut danych tabeli `events`
 --
 
 INSERT INTO `events` (`event_id`, `name`, `description`, `date`, `time`) VALUES
@@ -53,6 +53,25 @@ INSERT INTO `events` (`event_id`, `name`, `description`, `date`, `time`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `user-event`
+--
+
+CREATE TABLE `user-event` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Zrzut danych tabeli `user-event`
+--
+
+INSERT INTO `user-event` (`id`, `user_id`, `event_id`) VALUES
+(1, 1, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `users`
 --
 
@@ -60,18 +79,16 @@ CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `login` text NOT NULL,
   `password` varchar(32) NOT NULL,
-  `permission` varchar(3) NOT NULL
+  `permission` varchar(3) NOT NULL,
+  `join_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `users` (`user_id`, `login`, `password`, `permission`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'adm'),
-(2, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'usr'),
-(3, 'a', '92eb5ffee6ae2fec3ad71c777531578f', 'usr'),
-(4, 'pog', '5bb50314c7d970ce6cb07afb583c4c9d', 'usr');
+INSERT INTO `users` (`user_id`, `login`, `password`, `permission`, `join_date`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'adm', '2024-03-25');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -84,6 +101,12 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`event_id`);
 
 --
+-- Indeksy dla tabeli `user-event`
+--
+ALTER TABLE `user-event`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeksy dla tabeli `users`
 --
 ALTER TABLE `users`
@@ -91,20 +114,26 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `login` (`login`) USING HASH;
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT dla zrzuconych tabel
 --
 
 --
--- AUTO_INCREMENT for table `events`
+-- AUTO_INCREMENT dla tabeli `events`
 --
 ALTER TABLE `events`
   MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT dla tabeli `user-event`
+--
+ALTER TABLE `user-event`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

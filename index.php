@@ -19,6 +19,11 @@ session_start()
     <div id="header">
         <img src="./icons/logo.svg" >
         <?php include 'list.php' ?>
+
+
+        <?php
+        
+        ?>
     </div>
 </body>
 </html>
