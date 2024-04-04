@@ -290,3 +290,84 @@ td h4{
     font-size: 14px;
     cursor: pointer;
 }
+
+#home{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#events {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+#events .eventW{
+    width: 80%;
+    background-color: #1e1e1e;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+    padding: 0 20px;
+}
+#events .eventW span{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#events .eventW form{
+    width: 30%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+}
+
+#featured{
+    background-color: #1e1e1e;
+    width: 520px;
+    height: 560px;
+    justify-self: center;
+    border-radius: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+form .button{
+    margin-top: 5px;
+    border: solid #f2c70d 5px;
+    border-radius: 35px; 
+    background-color: transparent;
+    height: 40px;
+    width: 85px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+}
+form .button.b{
+    background-color: transparent;
+    color: #E2E2E2;
+}
+form .button.f{
+    background-color: #f2c70d;
+    color: #1e1e1e;
+}
+form .button.l{
+    width: 150px;
+}
