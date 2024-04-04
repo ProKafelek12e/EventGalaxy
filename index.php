@@ -21,9 +21,7 @@ session_start()
         <?php include 'list.php' ?>
     </div>
     <div id="home">
-        <div id="featured">
 
-        </div>
         <div id="events">
 
     <?php
@@ -40,7 +38,7 @@ session_start()
                 $result = mysqli_query($conn,$sql);
                 if(mysqli_num_rows($result)>0){
                     while( $row = mysqli_fetch_assoc($result)){
-                        echo '<div class="eventW">';
+                        echo '<div class="eventW child">';
                         echo '<span>';
                         echo '<h2>'.$row['name'].'</h2>';
                         echo '<h2>'.$row['date'].'</h2>';
@@ -71,15 +69,34 @@ session_start()
                         $sql = "INSERT INTO `user-event`(`user_id`, `event_id`) VALUES ('".$_SESSION['Id']."','".$event_id."')";
                         mysqli_query($conn,$sql);
                     }
+                    echo "</div>";
                 }
             }
             if(isset($_POST['Info'])){
                 if(isset($_POST['event_id'])){
                     $event_id = $_POST['event_id'];
+
+                    echo '<div id="featured" class="child">';
                     echo "<h1>I:".$event_id."</h1>";
+                    $conn = mysqli_connect('localhost','root','','szps');
+
+                    $currentYear = date("Y");
+                    $currentMonth = date("n");
+        
+                    if(!$conn){
+                        die(mysqli_connect_error($conn));
+                    }
+                    else{
+                        $sql = "SELECT events.* FROM `events` WHERE events.event_id =$event_id";
+                        $result = mysqli_query($conn,$sql);
+                        $row = mysqli_fetch_assoc(($result));
+                        echo "<h1>".$row['name']."</h1>";
+                        echo "<h2>".$row['date']."</h2>";
+                        echo "<p>".$row['description']."</p>";
+                    }
+                    echo '</div>';
                 }
             }
         ?>
-    </div>
 </body>
 </html>

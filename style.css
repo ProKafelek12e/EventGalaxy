@@ -303,6 +303,9 @@ td h4{
     align-items: center;
     gap: 30px;
 }
+#events:only-child{
+    grid-column:1 / span 2;
+}
 #events .eventW{
     width: 80%;
     background-color: #1e1e1e;
