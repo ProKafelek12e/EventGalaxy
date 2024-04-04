@@ -291,6 +291,8 @@ td h4{
     cursor: pointer;
 }
 
+/* homepage */
+
 #home{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -333,6 +335,30 @@ td h4{
     border-radius: 16px;
 }
 
+/* alert */
+
+.alert{
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: 100px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: #f2c70d 5px solid;
+    background-color: #1e1e1e;
+}
+.alert span{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    cursor: pointer;
+}
 
 
 

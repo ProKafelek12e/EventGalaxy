@@ -92,6 +92,15 @@ session_start()
         ?>
         <!-- Sign up and Sign in -->
         <?php
+            function alert($message){
+                if(isset($message) && !empty($message)) {
+                    // Display the alert message
+                    echo "<div class='alert'>";
+                    echo "<span class='closebtn' onclick='this.parentElement.style.display=\"none\";'><img src='./icons/close.svg'></span>";
+                    echo "<h2>$message</h2>";
+                    echo "</div>";
+                }
+            }
             //from filled?
             if(isset($_POST['login']) && isset($_POST['password'])){
                 $login = $_POST['login'];
@@ -164,10 +173,11 @@ session_start()
                     if(mysqli_num_rows($check_result)>0){
                         $sql = "UPDATE users SET password='".md5($_POST['newPassword'])."' WHERE user_id=". $_SESSION['Account']['id'];
                         $result = mysqli_query($conn,$sql);
-                            echo "<script>alert('Password Changed')</script>";
+                            alert('Password Changed');
                         }           
                         else{
-                            echo "<script>alert('Something went wrong')</script>";
+                            //echo "<script>alert('Something went wrong')</script>";
+                            alert('Something went wrong');
                         }
                 }
                 mysqli_close($conn);
