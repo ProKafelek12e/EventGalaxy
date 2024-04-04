@@ -69,8 +69,8 @@ session_start()
                     echo '</form>';
                     $conn = mysqli_connect('localhost','root','','szps');
 
-                    $aSql = "SELECT Count(id) as All_events FROM `user-event` WHERE user_id=1";
-                    $cSql = "SELECT Count(id) as Current_events FROM `user-event`,events WHERE `user-event`.user_id=1 AND `user-event`.event_id = events.event_id AND (SELECT CURRENT_DATE())<=events.date";
+                    $aSql = "SELECT Count(id) as All_events FROM `user-event` WHERE user_id=".$_SESSION['Id'];
+                    $cSql = "SELECT Count(id) as Current_events FROM `user-event`,events WHERE `user-event`.user_id=".$_SESSION['Id']." AND `user-event`.event_id = events.event_id AND (SELECT CURRENT_DATE())<=events.date";
                     
                     $aResult = mysqli_query($conn,$aSql);
                     $aRow = mysqli_fetch_assoc($aResult);
@@ -96,7 +96,7 @@ session_start()
             if(isset($_POST['login']) && isset($_POST['password'])){
                 $login = $_POST['login'];
                 $password = $_POST['password'];
-
+                //sign up
                 if(isset($_POST['Up'])){
 
                     $conn = mysqli_connect('localhost','root','','szps');
@@ -120,7 +120,7 @@ session_start()
                 }
 
 
-
+                //login
                 elseif(isset($_POST['In'])){
 
                     $conn = mysqli_connect('localhost','root','','szps');
@@ -152,6 +152,7 @@ session_start()
                     mysqli_close($conn);
                 }
             }
+            //change password
             if(isset($_POST['oldPassword'])&&isset($_POST['newPassword'])){
                 $conn = mysqli_connect('localhost','root','','szps');
                 if(!$conn){
