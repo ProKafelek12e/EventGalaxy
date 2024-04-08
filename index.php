@@ -55,29 +55,38 @@ session_start()
         ?>
         </div>
         <?php
+            include 'custom.php';
             if(isset($_POST['Join'])){
                 if(isset($_POST['event_id'])){
                     $event_id = $_POST['event_id'];
-                    echo "<h1>J:".$event_id."</h1>";
+                    //echo "<h1>J:".$event_id."</h1>";\
+                    alert("Joined: $event_id");
                     $conn = mysqli_connect('localhost','root','','szps');
 
                     if(!$conn){
                         die(mysqli_connect_error($conn));
                     }
                     else{
+                        $sql_check = "SELECT id FROM `user-event` WHERE `user_id` = ". $_SESSION['Id']." AND event_id=".$event_id;
+                        $check = mysqli_query($conn,$sql_check);
+                        if(mysqli_num_rows($check)>0){
 
-                        $sql = "INSERT INTO `user-event`(`user_id`, `event_id`) VALUES ('".$_SESSION['Id']."','".$event_id."')";
-                        mysqli_query($conn,$sql);
+                        }
+                        else{
+                            $sql = "INSERT INTO `user-event`(`user_id`, `event_id`) VALUES ('".$_SESSION['Id']."','".$event_id."')";
+                            mysqli_query($conn,$sql);
+                        }
                     }
-                    echo "</div>";
                 }
             }
+        ?>
+        <?php
             if(isset($_POST['Info'])){
                 if(isset($_POST['event_id'])){
                     $event_id = $_POST['event_id'];
 
                     echo '<div id="featured" class="child">';
-                    echo "<h1>I:".$event_id."</h1>";
+                    //echo "<h1>I:".$event_id."</h1>";
                     $conn = mysqli_connect('localhost','root','','szps');
 
                     $currentYear = date("Y");
@@ -90,9 +99,15 @@ session_start()
                         $sql = "SELECT events.* FROM `events` WHERE events.event_id =$event_id";
                         $result = mysqli_query($conn,$sql);
                         $row = mysqli_fetch_assoc(($result));
+                        echo "<span>";
                         echo "<h1>".$row['name']."</h1>";
                         echo "<h2>".$row['date']."</h2>";
                         echo "<p>".$row['description']."</p>";
+                        echo "</span>";
+                        echo "<form method='post' action=''>";
+                        echo '<input type="hidden" name="event_id" value="' . $row['event_id'] . '">';
+                        echo '<input type="submit" name = "Join" value="Join" class="button f">';
+                        echo "</form>";
                     }
                     echo '</div>';
                 }

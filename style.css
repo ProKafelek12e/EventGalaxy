@@ -328,6 +328,7 @@ td h4{
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
+    
 }
 
 #featured{
@@ -336,6 +337,17 @@ td h4{
     height: 560px;
     justify-self: center;
     border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#featured span{
+    margin-top: 20px;
+    margin-left: 40px;
+}
+#featured form{
+    align-self: last baseline;
+    margin: 0 40px 40px 0;
 }
 
 /* alert */
