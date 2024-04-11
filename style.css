@@ -15,7 +15,7 @@ h2{
     color: #C2C2C2;
     font-size: 18px;
 }
-p{
+p, label{
     color: #A2A2A2;
     font-size: 12px;
 }
@@ -46,7 +46,6 @@ p{
     margin-top: 5px;
     font-weight: normal;
 }
-
 
 /* HEADER */
 
@@ -318,10 +317,11 @@ td h4{
     padding: 0 20px;
 }
 #events .eventW span{
-    width: 40%;
+    width: 50%;
+    padding-left: 5%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 #events .eventW form{
     width: 30%;
@@ -375,21 +375,6 @@ td h4{
     cursor: pointer;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 form .button{
     margin-top: 5px;
     border: solid #f2c70d 5px;
@@ -435,4 +420,90 @@ form .button.l{
     justify-content: center;
     align-items: center;
     padding: 0 20px;
+}
+
+/* 
+    add Form
+*/
+#content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#AddForm{
+    background-color: #1e1e1e;
+    border-radius: 16px;
+    width: 560px;
+    height: 660px;
+}
+#AddForm input[type=text] {
+	appearance: none;
+	border: none;
+	outline: none;
+	background: rgba(#f2c70d, .2);
+	border-radius: 4px;
+	padding: 8px 12px;
+	color: #f2c70d;
+    width: 134px;
+    height: 23px;
+    background-color: transparent;
+    border-bottom: 2px solid #f2c70d;
+    background-color: #111;
+}   
+#AddForm input[type="date"] {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 0;
+    font-size: 16px;
+    outline: none;
+    width: 134px;
+    background-color: transparent;
+    border-bottom: 2px solid #f2c70d;
+    background-color: #111;
+    color: #f2c70d;
+    &::-webkit-calendar-picker-indicator {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23f2c70d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E"); 
+	}
+}
+#AddForm input[type="time"] {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 0;
+    color: #f2c70d;
+    font-size: 16px;
+    outline: none;
+    width: 134px;
+    background-color: transparent;
+    border-bottom: 2px solid #f2c70d;
+    background-color: #111;
+}
+#AddForm input[type="time"]::-webkit-calendar-picker-indicator {
+    background-image: url("./icons/clock.svg");
+
+}
+#AddForm textarea {
+	appearance: none;
+	border: none;
+	outline: none;
+	background: rgba(#f2c70d, .2);
+	border-radius: 4px;
+	padding: 8px 12px;
+	color: #f2c70d;
+    width: 134px;
+    height: 23px;
+    background-color: transparent;
+    border-bottom: 2px solid #f2c70d;
+    background-color: #111;
+}   
+#AddForm form{
+    display: flex;
+    flex-direction: column;
+}
+#submit{
+    position: relative;
+    bottom: 0px;
+}
+#AddForm{
+    padding: 20px;
 }

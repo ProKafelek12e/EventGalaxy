@@ -127,5 +127,10 @@ session_start()
         ?>
         <?php
         ?>
+        <?php
+            if(isset($_POST['Add'])){
+                header('Location:event.php');
+            }
+        ?>
 </body>
 </html>
