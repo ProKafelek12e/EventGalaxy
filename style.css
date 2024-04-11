@@ -412,3 +412,27 @@ form .button.f{
 form .button.l{
     width: 150px;
 }
+
+
+
+.eventA #add{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    background-color: transparent;
+    color: #c2c2c2;
+    font-size: 20px;
+    cursor: pointer;
+}
+.eventA{
+    width: 80%;
+    background-color: #0e0e0e;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}

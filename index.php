@@ -34,6 +34,14 @@ session_start()
                 die(mysqli_connect_error($conn));
             }
             else{
+                if($_SESSION['Permission']=='wrk'){
+
+                    echo '<div class="eventA child">';
+                    echo '<form id="out" action="" method="post" id="LogForm">';
+                    echo '<input type="submit" name = "Add" value="Add new event" id="add">';
+                    echo '</form>';
+                    echo '</div>';
+                }
                 $sql = "SELECT events.* FROM `events` WHERE events.date LIKE '$currentYear%$currentMonth-__' ORDER BY date asc, time asc";
                 $result = mysqli_query($conn,$sql);
                 if(mysqli_num_rows($result)>0){
@@ -60,6 +68,7 @@ session_start()
                 if(isset($_POST['event_id'])){
                     $event_id = $_POST['event_id'];
                     //echo "<h1>J:".$event_id."</h1>";\
+                    echo "</div>";
                     alert("Joined: $event_id");
                     $conn = mysqli_connect('localhost','root','','szps');
 
@@ -112,6 +121,8 @@ session_start()
                     echo '</div>';
                 }
             }
+        ?>
+        <?php
         ?>
 </body>
 </html>
