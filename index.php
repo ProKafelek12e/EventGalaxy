@@ -53,6 +53,7 @@ session_start()
                         echo '</span>';
                         echo '<form id="out" action="" method="post" id="LogForm">';
                         echo '<input type="hidden" name="event_id" value="' . $row['event_id'] . '">';
+                        echo '<input type="hidden" name="Ename" value="'.$row['name'].'">';
                         echo '<input type="submit" name = "Join" value="Join" class="button f">';
                         echo '<input type="submit" name ="Info" value="Info" class="button b">';
                         echo '</form>';
@@ -67,9 +68,10 @@ session_start()
             if(isset($_POST['Join'])){
                 if(isset($_POST['event_id'])){
                     $event_id = $_POST['event_id'];
+                    $name = $_POST['Ename'];
                     //echo "<h1>J:".$event_id."</h1>";\
                     echo "</div>";
-                    alert("Joined: $event_id");
+                    alert("Joined: $name");
                     $conn = mysqli_connect('localhost','root','','szps');
 
                     if(!$conn){
@@ -115,6 +117,7 @@ session_start()
                         echo "</span>";
                         echo "<form method='post' action=''>";
                         echo '<input type="hidden" name="event_id" value="' . $row['event_id'] . '">';
+                        echo '<input type="hidden" name="Ename" value="'.$row['name'].'">';
                         echo '<input type="submit" name = "Join" value="Join" class="button f">';
                         echo "</form>";
                     }
