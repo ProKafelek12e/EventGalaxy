@@ -34,7 +34,7 @@ session_start()
                 die(mysqli_connect_error($conn));
             }
             else{
-                if($_SESSION['Permission']=='wrk'||$_SESSION['Permission']=='adm'){
+                if(isset($_SESSION['Permission'])&&($_SESSION['Permission']=='wrk'||$_SESSION['Permission']=='adm')){
 
                     echo '<div class="eventA child">';
                     echo '<form id="out" action="" method="post" id="LogForm">';
