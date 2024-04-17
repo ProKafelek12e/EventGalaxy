@@ -27,17 +27,29 @@ session_start()
     <div id="content">
 
     <div id="AddForm">
-        <form action="" method="post">
-            <label for="name">Name of the Event</label>
-            <input type="text" name="name" maxlength="50" id="name"><br> 
-            <label for="description">Description of the Event</label>
-            <textarea name="description" rows="4" cols="50" id="description"></textarea><br> 
-            <label for="date">Date of the Event</label>
-            <input type="date" name="date" id="date"><br> 
-            <label for="time">Time of the Event</label>
-            <input type="time" name="time" id="time"><br> 
-            <input type="submit" value="Add event" class="button f" id="submit">
-        </form>
+        <?php
+        $conn = mysqli_connect('localhost','root','','szps');
+
+        if(!$conn){
+            die(mysqli_connect_error($conn));
+        }
+        else{
+            $sql = "SELECT * FROM `events` WHERE event_id=".$_SESSION['Edited'];
+            $result = mysqli_query($conn,$sql);
+            $row = mysqli_fetch_assoc($result);
+            echo '<form action="" method="post">';
+            echo '<label for="name">Name of the Event</label>';
+            echo '<input type="text" name="name" maxlength="50" id="name" value="'.$row['name'].'"><br>';
+            echo '<label for="description">Description of the Event</label>';
+            echo '<textarea name="description" rows="4" cols="50" id="description">'.$row['description'].'</textarea><br>';
+            echo '<label for="date">Date of the Event</label>';
+            echo '<input type="date" name="date" id="date" value="'.$row['date'].'"><br>';
+            echo '<label for="time">Time of the Event</label>';
+            echo '<input type="time" name="time" id="time" value="'.$row['time'].'"><br>';
+            echo '<input type="submit" name="Edit" value="Save" class="button f" id="submit">';
+            echo '</form>';
+        }
+        ?>
     </div>
     <?php
         $conn = mysqli_connect('localhost','root','','szps');
@@ -48,7 +60,7 @@ session_start()
         else{
             if(isset($_POST['name'],$_POST['description'],$_POST['date'],$_POST['time'])){        
                 $name = $_POST['name'];$descrption = $_POST['description'];$date = $_POST['date'];$time = $_POST['time'];
-                $sql = "INSERT INTO `events`(`name`, `description`, `date`, `time`) VALUES ('$name','$descrption','$date','$time')";
+                $sql = "UPDATE `events` SET `name`='$name',`description`='$descrption',`date`='$date',`time`='$time' WHERE event_id=".$_SESSION['Edited'];
                 $result = mysqli_query($conn,$sql);
                 header('Location:index.php');
             }

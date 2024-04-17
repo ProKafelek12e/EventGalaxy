@@ -34,7 +34,7 @@ session_start()
                 die(mysqli_connect_error($conn));
             }
             else{
-                if($_SESSION['Permission']=='wrk'){
+                if($_SESSION['Permission']=='wrk'||$_SESSION['Permission']=='adm'){
 
                     echo '<div class="eventA child">';
                     echo '<form id="out" action="" method="post" id="LogForm">';
@@ -118,6 +118,8 @@ session_start()
                         echo "<form method='post' action=''>";
                         echo '<input type="hidden" name="event_id" value="' . $row['event_id'] . '">';
                         echo '<input type="hidden" name="Ename" value="'.$row['name'].'">';
+                        if($_SESSION['Permission']=='adm') echo '<input type="submit" name = "Delete" value="Delete" class="button b">';
+                        if($_SESSION['Permission']=='wrk'||$_SESSION['Permission']=='adm') echo '<input type="submit" name="Edit" value="Edit" class="button b">';
                         echo '<input type="submit" name = "Join" value="Join" class="button f">';
                         echo "</form>";
                     }
@@ -126,6 +128,28 @@ session_start()
             }
         ?>
         <?php
+        if(isset($_POST['Delete'])){
+            $event_id = $_POST['event_id'];
+            $name = $_POST['Ename'];
+            echo "</div>";
+            $conn = mysqli_connect('localhost','root','','szps');
+
+            if(!$conn){
+                die(mysqli_connect_error($conn));
+            }
+            else{
+                $sql = "DELETE FROM `events` WHERE event_id=".$event_id;
+                mysqli_query($conn,$sql);
+                alert("Event: ".$name." has been deleted");
+            }
+        }
+        ?>
+        <?php
+        if(isset($_POST['Edit'])){
+            $_SESSION['Edited']=$_POST['event_id'];
+            echo"</div>";
+            header('Location:edit.php');
+        }
         ?>
         <?php
             if(isset($_POST['Add'])){
