@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 25 Mar 2024, 15:55
+-- Czas generowania: 18 Kwi 2024, 08:44
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -40,15 +40,12 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`event_id`, `name`, `description`, `date`, `time`) VALUES
-(1, 'TEST EVENT', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', '2024-03-28', '14:55:00'),
-(2, 'concert', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', '2024-03-19', '12:00:00'),
-(3, 'workshop', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', '2024-03-20', '10:00:00'),
-(4, 'conference', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', '2024-03-21', '09:30:00'),
-(6, 'charity fundraiser', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', '2024-03-22', '14:00:00'),
-(7, 'sports tournament', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', '2024-03-24', '13:30:00'),
-(8, 'movie screening', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', '2024-03-25', '18:00:00'),
-(9, 'cooking class', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', '2024-03-26', '16:30:00'),
-(10, 'dance competition', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', '2024-03-27', '15:00:00');
+(1, 'TEST ', 'fdsf sd fsd fsd sd fsd dsfsdf fsd', '2024-04-19', '08:20:00'),
+(2, 'TEST2 ', 'tretretrertrtr', '2024-04-29', '15:05:00'),
+(3, 'TEST3 ', 'bvcbcvb cvbc vb cc ', '2024-04-24', '13:20:00'),
+(4, 'TEST4 ', 'jhgjh jgh gh g gfhf ghgfh fgh', '2024-04-26', '08:50:00'),
+(5, 'TEST5', 'uytuyt uyt tuy tu yt uty ut ty  yt', '2024-04-23', '20:40:00'),
+(6, 'green', 'WHAT is YOUR problem GREEEEN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', '2024-04-16', '12:01:00');
 
 -- --------------------------------------------------------
 
@@ -67,7 +64,9 @@ CREATE TABLE `user-event` (
 --
 
 INSERT INTO `user-event` (`id`, `user_id`, `event_id`) VALUES
-(1, 1, 3);
+(1, 3, 1),
+(2, 3, 5),
+(3, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -88,7 +87,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `login`, `password`, `permission`, `join_date`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'adm', '2024-03-25');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'adm', '2024-03-25'),
+(2, 'worker', 'b61822e8357dcaff77eaaccf348d9134', 'wrk', '2024-04-04'),
+(3, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'usr', '2024-04-08');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -121,19 +122,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT dla tabeli `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT dla tabeli `user-event`
 --
 ALTER TABLE `user-event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
