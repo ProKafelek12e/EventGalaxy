@@ -21,7 +21,6 @@ session_start()
         <?php include 'list.php' ?>
     </div>
     <div id="home">
-
         <div id="events">
 
     <?php
@@ -114,6 +113,26 @@ session_start()
                         echo "<h1>".$row['name']."</h1>";
                         echo "<h2>".$row['date']."</h2>";
                         echo "<p>".$row['description']."</p>";
+                        if($_SESSION['Permission']=='wrk'||$_SESSION['Permission']=='adm'){
+
+                            echo "<h2 style='margin-top:50px;''>Users joined: </h2>";
+                            echo '<p>';
+                            $sql_user = "SELECT * FROM `users` JOIN `user-event` ON users.user_id=`user-event`.`user_id` WHERE `user-event`.`event_id`=".$event_id;
+                            $result_user = mysqli_query($conn,$sql_user);
+                            if(mysqli_num_rows($result_user) > 0){
+                                $totalRows = mysqli_num_rows($result_user);
+                                $currentRow = 0;
+                                while($rowU = mysqli_fetch_assoc($result_user)){
+                                    $currentRow++;
+                                    if($currentRow == $totalRows) {
+                                        echo $rowU['login'];
+                                    } else {
+                                        echo $rowU['login'].", ";
+                                    }
+                                }
+                            }
+                            echo "</p>";
+                        }
                         echo "</span>";
                         echo "<form method='post' action=''>";
                         echo '<input type="hidden" name="event_id" value="' . $row['event_id'] . '">';
