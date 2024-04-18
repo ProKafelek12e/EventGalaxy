@@ -66,7 +66,7 @@ $_SESSION['searched']=false;
                 $sql = 'SELECT * FROM users';
                 $result = mysqli_query($conn,$sql);
                 if(mysqli_num_rows($result)>0){
-                    echo "<div class='userd'><form method='post' action=''><input type='text' name='login'><input class='glass' type='submit' value='🔍' name='search'></form><h2>Permission</h2><form method='post' action=''><h2>Change</h2></form></div>";
+                    echo "<div class='userd'><form method='post' action=''><input type='text' name='login'><button class='glass' type='submit' name='search'><img src='./icons/glass.svg'></button></form><h2>Permission</h2><form method='post' action=''><h2>Change</h2></form></div>";
                     while($row = mysqli_fetch_assoc($result)){
                         if($row['permission']=='wrk'){
                             echo "<div class='user'><h4>".$row['login']."</h4><h4>worker</h4><form method='post' action=''><input type='hidden' value='".$row['user_id']."' name='id'><input type='submit' value='Demote' name='demote' class='button f'></form></div>";
