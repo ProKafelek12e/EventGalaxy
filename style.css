@@ -348,6 +348,10 @@ td h4{
 #featured form{
     align-self: last baseline;
     margin: 0 40px 40px 0;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 /* alert */
