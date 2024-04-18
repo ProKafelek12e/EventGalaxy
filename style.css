@@ -550,3 +550,35 @@ form .button.l{
     align-items: center;
     border-radius: 18px;
 }
+
+.glass{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    cursor:pointer;
+}
+
+.userd form{
+    display: flex;
+    flex-direction: row;
+}
+.userd form input{
+    appearance: none;
+    border: none;
+    outline: none;
+    border-bottom: .2em solid rgb(255, 255, 255);
+    background: rgba(0,0,0,0);
+    border-radius: 10px 10px 0 0;
+    padding: .4em;
+    color: rgb(255, 255, 255);
+}
+
+.glass{
+    width: 28px;
+    height: 28px;
+}
+.glass img{
+    height: 28px;
+    width: 28px;
+}

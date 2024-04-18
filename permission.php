@@ -1,5 +1,6 @@
 <?php
-session_start()
+session_start();
+$_SESSION['searched']=false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,28 +22,7 @@ session_start()
         <?php include 'list.php' ?>
     </div>
     <div id="users">
-        <?php
-        $conn = mysqli_connect('localhost','root','','szps');
-        if(!$conn){
-            die(mysqli_connect_error($conn));
-        }
-        else{
-            $sql = 'SELECT * FROM users';
-            $result = mysqli_query($conn,$sql);
-            if(mysqli_num_rows($result)>0){
-                echo "<div class='userd'><h2>Login</h2><h2>Permission</h2><form method='post' action=''><h2>Change</h2></form></div>";
-                while($row = mysqli_fetch_assoc($result)){
-                    if($row['permission']=='wrk'){
-                        echo "<div class='user'><h4>".$row['login']."</h4><h4>worker</h4><form method='post' action=''><input type='hidden' value='".$row['user_id']."' name='id'><input type='submit' value='Demote' name='demote' class='button f'></form></div>";
-                    }
-                    else if($row['permission']=='usr'){
-                        echo "<div class='user'><h4>".$row['login']."</h4><h4>user</h4><form method='post' action=''><input type='hidden' value='".$row['user_id']."' name='id'><input type='submit' value='Promte' name='promote' class='button f'></form></div>";
-                    }
-                }
-            }
-        }
-        ?>
-        <?php
+    <?php
         $conn = mysqli_connect('localhost','root','','szps');
         if(!$conn){
             die(mysqli_connect_error($conn));
@@ -55,7 +35,51 @@ session_start()
             $sql = "UPDATE users set permission='usr' WHERE user_id=".$_POST['id'];
             mysqli_query($conn,$sql);
         }
+        if(isset($_POST['search'])){
+            $_SESSION['searched']=true;
+            $sql = "SELECT * FROM users WHERE login LIKE'".$_POST['login']."%'";
+            $result = mysqli_query($conn,$sql);
+            echo "<div class='userd'><form method='post' action=''><input type='text' name='login'><button class='glass' type='submit' name='search'><img src='./icons/glass.svg'></button></form><h2>Permission</h2><form method='post' action=''><h2>Change</h2></form></div>";
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        if($row['permission']=='wrk'){
+                            echo "<div class='user'><h4>".$row['login']."</h4><h4>worker</h4><form method='post' action=''><input type='hidden' value='".$row['user_id']."' name='id'><input type='submit' value='Demote' name='demote' class='button f'></form></div>";
+                        }
+                        else if($row['permission']=='usr'){
+                            echo "<div class='user'><h4>".$row['login']."</h4><h4>user</h4><form method='post' action=''><input type='hidden' value='".$row['user_id']."' name='id'><input type='submit' value='Promte' name='promote' class='button f'></form></div>";
+                        }
+                    }
+                }
+                else{
+                    echo "<div class='user'><h4 style='width:300px;'>No users found</h4></div>";
+                }
+            }
         ?>
+        <?php
+        if($_SESSION['searched']!=true){
+
+            $conn = mysqli_connect('localhost','root','','szps');
+            if(!$conn){
+                die(mysqli_connect_error($conn));
+            }
+            else{
+                $sql = 'SELECT * FROM users';
+                $result = mysqli_query($conn,$sql);
+                if(mysqli_num_rows($result)>0){
+                    echo "<div class='userd'><form method='post' action=''><input type='text' name='login'><input class='glass' type='submit' value='🔍' name='search'></form><h2>Permission</h2><form method='post' action=''><h2>Change</h2></form></div>";
+                    while($row = mysqli_fetch_assoc($result)){
+                        if($row['permission']=='wrk'){
+                            echo "<div class='user'><h4>".$row['login']."</h4><h4>worker</h4><form method='post' action=''><input type='hidden' value='".$row['user_id']."' name='id'><input type='submit' value='Demote' name='demote' class='button f'></form></div>";
+                        }
+                        else if($row['permission']=='usr'){
+                            echo "<div class='user'><h4>".$row['login']."</h4><h4>user</h4><form method='post' action=''><input type='hidden' value='".$row['user_id']."' name='id'><input type='submit' value='Promte' name='promote' class='button f'></form></div>";
+                        }
+                    }
+                }
+            }
+        }
+        ?>
+        
     </div>
 </body>
 </html>
